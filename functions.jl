@@ -59,4 +59,110 @@ println(objectid(y))
 1 + 2 + 3 + 4 + 5 + 6
 +(1, 2, 3, 4, 5, 6)
 
-# 匿名函式
+# 匿名函式 (anonymous function)
+# ex9
+a = () -> println("Calling function a.")
+a()
+
+# ex10
+b = x -> println(x)
+b(5)
+
+# ex11
+c = (x, y) -> x + y
+c(2, 3)
+
+# 數組(Tuples)
+# ex12
+x = (1, 2, 3)
+
+# ex13
+x = 1, 2, 3
+x = [1]
+x = [2:3]
+
+# ex14
+y = (1, 1.2, 'D', "ABC123", true)
+typeof(y)
+
+# ex15 (tuple can't change)
+x[1] = 3
+
+# ex16 (解開)
+a, b, c = x
+a
+b
+c
+
+# ex17 (交換)
+b ,a = a, b
+a
+b
+
+# ex18 (數組是函式用來傳遞參數的資料結構)
+h(1, 2)
+
+# ex19 (在for迴圈中無法省略小括弧)
+x = [(1, 2), (3, 4), (5, 6)]
+for (i,j) in x
+    println(i, j)
+end
+
+for i,j in x
+    println(i, j)
+end
+
+# ex20 (return)
+function sumproduct(x, y, z)
+    return (x + y) * z
+end
+
+function sumproduct(x, y, z)
+    (x + y) * z
+end
+
+# ex21
+function shuffle_(x, y, z)
+    (y, z, x)
+end
+
+a, b, c = shuffle_(1, 2, 3)
+a
+b
+c
+
+# 參數解構(Argument destruction)
+# ex22
+x = [1, 2, 3]
+shuffle_(x...)
+
+# 函式向量化
+# ex23
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+y = []
+for i in x
+    push!(y, i^2)
+end
+y
+
+# ex24
+x .^2
+
+# ex25
+f(x) = 3x
+f.(x)
+
+# ex26
+println("請輸入一個正整數 N : ")
+input = parse(Int64, readline())
+println("您所輸入的數字 N=", input)
+println("N! = ", f(input))
+
+function f(n)
+    if n==1
+        return 1
+    else
+        #println("test")
+        return n * f(n-1)
+    end
+end
